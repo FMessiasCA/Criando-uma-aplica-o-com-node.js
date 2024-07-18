@@ -1,11 +1,11 @@
-const { Router } = require("express");
+const { Router } = require('express');
+
+const UsersController = require('../controllers/UsersController');
 
 const usersRoutes = Router();
 
-usersRoutes.post("/", (request, response) => {
-    const { name, email, senha } = request.body;
+const usersController = new UsersController();
 
-    response.send(`Seja bem vindo ${name}. Enviamos a confirmação no seu e-mail (${email}), e solicitamos uma alteração da sua senha "${senha}" para algo menos racista.`);
-});
+usersRoutes.post('/', usersController.create);
 
 module.exports = usersRoutes;
